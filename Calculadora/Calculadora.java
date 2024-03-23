@@ -1,5 +1,3 @@
-package calculadora;
-
 public class Calculadora {
 
     private float resultado;
@@ -37,20 +35,24 @@ public class Calculadora {
 
     private void Subtração() {
         for (int i = 0; i < this.array.length; i++) {
-            this.resultado -= this.array[i];
+            if (i == 0) {
+                this.resultado = this.array[i];
+            } else {
+                this.resultado -= this.array[i];
+            }
         }
     }
 
     private void Multiplicação() {
-        this.resultado = 1;
-        for (int i = 0; i < this.array.length; i++) {
+        this.resultado = this.array[0];
+        for (int i = 1; i < this.array.length; i++) {
             this.resultado *= this.array[i];
         }
     }
 
     private void Divisão() {
-        this.resultado = 1;
-        for (int i = 0; i < this.array.length; i++) {
+        this.resultado = this.array[0];
+        for (int i = 1; i < this.array.length; i++) {
             this.resultado /= this.array[i];
         }
     }

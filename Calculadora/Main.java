@@ -1,21 +1,59 @@
-package calculadora;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Teste - Calculadora");
+        Scanner scanner = new Scanner(System.in);
 
-        int[] array = { 1, 2, 3, 4 };
+        System.out.println("Digite o primeiro número:");
+        double num1 = scanner.nextDouble();
 
-        Calculadora c = new Calculadora(array, '+');
-        System.out.println(c.GetResultado());
+        System.out.println("Digite o segundo número:");
+        double num2 = scanner.nextDouble();
 
-        Calculadora c1 = new Calculadora(array, '-');
-        System.out.println(c1.GetResultado());
+        System.out.println(
+                "|Escolha sua operacao \n| Soma => + \n| Subtração => -\n| Multiplicação => x\n| Divisão => /\n");
 
-        Calculadora c2 = new Calculadora(array, '*');
-        System.out.println(c2.GetResultado());
+        char operacao = scanner.next().charAt(0);
 
-        Calculadora c3 = new Calculadora(array, '/');
-        System.out.println(c3.GetResultado());
+        int[] numeros = { (int) num1, (int) num2 };
+        Calculadora calculadora = new Calculadora(numeros, operacao);
+
+        float resultadoCalculadora = calculadora.GetResultado();
+
+        switch (operacao) {
+            case '+':
+                System.out.println("Resultado da Soma: " + resultadoCalculadora);
+                break;
+            case '-':
+                System.out.println("Resultado da Subtração: " + resultadoCalculadora);
+                break;
+            case '*':
+                System.out.println("Resultado da Multiplicação: " + resultadoCalculadora);
+                break;
+            case '/':
+                System.out.println("Resultado da Divisão: " + resultadoCalculadora);
+                break;
+            default:
+                System.out.println("Operação inválida!");
+        }
+
+        CalculadoraCientifica calculadoraCientifica = new CalculadoraCientifica();
+
+        double potencia1 = calculadoraCientifica.potencia(num1, 2);
+        System.out.println("Potência do primeiro número: " + potencia1);
+
+        double potencia2 = calculadoraCientifica.potencia(num2, 2);
+        System.out.println("Potência do segundo número: " + potencia2);
+
+        double raizQuadrada1 = calculadoraCientifica.raizQuadrada(num1);
+        System.out.println("Raiz Quadrada do primeiro número: " + raizQuadrada1);
+
+        double raizQuadrada2 = calculadoraCientifica.raizQuadrada(num2);
+        System.out.println("Raiz Quadrada do segundo número: " + raizQuadrada2);
+
+        double logaritmo = calculadoraCientifica.logaritimo(num1, num2);
+        System.out.println("Logaritmo do primeiro número na base do segundo número: " + logaritmo);
+
+        scanner.close();
     }
 }
